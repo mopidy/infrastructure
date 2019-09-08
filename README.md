@@ -7,8 +7,8 @@
 
 To update a Docker image maintained in this repo, you must:
 
-1. [Configure Docker for use with GitHub Package
-   Registry](https://help.github.com/en/articles/configuring-docker-for-use-with-github-package-registry).
+1. Run `docker login` and login with your [DockerHub](https://hub.docker.com/)
+   account that has access to the `mopidy` organization.
 
 2. Bump the version number in the image directory's `VERSION` file.
 
@@ -22,5 +22,4 @@ To update a Docker image maintained in this repo, you must:
 6. Commit all your changes to Git.
 
 7. Run `make release` to tag a new release in Git and Docker, to push the
-   source changes to the GitHub repo, and the new Docker image to the GitHub
-   Package Registry.
+   source changes to the GitHub repo, and the new Docker image to DockerHub.
