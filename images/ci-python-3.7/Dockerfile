@@ -10,6 +10,7 @@ RUN apt-get update \
     graphviz-dev \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-ugly \
     python-dev \
     python-gst-1.0 \
     python3-gst-1.0 \
