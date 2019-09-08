@@ -1,27 +1,27 @@
-REPO=mopidy
-IMAGE=ci-python
+REPO = mopidy
+IMAGE = ci-python
 
-VERSION=`cat VERSION`
-PYVERSION=`echo ${VERSION} | cut -d - -f1`
-PYMAJOR=`echo ${PYVERSION} | cut -d . -f1`
-PYMINOR=`echo ${PYVERSION} | cut -d . -f2`
-PYPATCH=`echo ${PYVERSION} | cut -d . -f3`
+VERSION = $(shell cat VERSION)
+PYVERSION = $(shell echo ${VERSION} | cut -d - -f1)
+PYMAJOR = $(shell echo ${PYVERSION} | cut -d . -f1)
+PYMINOR = $(shell echo ${PYVERSION} | cut -d . -f2)
+PYPATCH = $(shell echo ${PYVERSION} | cut -d . -f3)
 
-.PHONY: build release
+.PHONY: build release git-release docker-release
 
 build:
 	docker build -t ${REPO}/${IMAGE}:latest .
 
-release:
-	# Abort if git is unclean
-	git diff-index --quiet HEAD
+release: git-release docker-release
 
-	# Create tags
+git-release:
+	git diff-index --quiet HEAD || echo "Git repo is unclean"
 	git tag -a "${IMAGE}/${VERSION}" -m "Release ${IMAGE}:${VERSION}"
-	docker tag ${REPO}/${IMAGE}:latest ${REPO}/${IMAGE}:${VERSION}
-
-	# Push source and image
 	git push --follow-tags
+
+docker-release:
+	docker tag ${REPO}/${IMAGE}:${VERSION} ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
+	docker tag ${REPO}/${IMAGE}:${VERSION} ${REPO}/${IMAGE}:latest
 	docker push ${REPO}/${IMAGE}:${VERSION}
 	docker push ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
 	docker push ${REPO}/${IMAGE}:latest
