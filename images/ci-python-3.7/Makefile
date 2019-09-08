@@ -1,4 +1,4 @@
-REPO=docker.pkg.github.com/mopidy/infrastructure
+REPO=mopidy
 IMAGE=ci-python
 VERSION=`cat VERSION`
 
