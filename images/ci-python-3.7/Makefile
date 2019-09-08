@@ -1,6 +1,11 @@
 REPO=mopidy
 IMAGE=ci-python
+
 VERSION=`cat VERSION`
+PYVERSION=`echo ${VERSION} | cut -d - -f1`
+PYMAJOR=`echo ${PYVERSION} | cut -d . -f1`
+PYMINOR=`echo ${PYVERSION} | cut -d . -f2`
+PYPATCH=`echo ${PYVERSION} | cut -d . -f3`
 
 .PHONY: build release
 
@@ -17,5 +22,6 @@ release:
 
 	# Push source and image
 	git push --follow-tags
-	docker push ${REPO}/${IMAGE}:latest
 	docker push ${REPO}/${IMAGE}:${VERSION}
+	docker push ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
+	docker push ${REPO}/${IMAGE}:latest
