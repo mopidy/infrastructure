@@ -20,8 +20,8 @@ git-release:
 	git push --follow-tags
 
 docker-release:
-	docker tag ${REPO}/${IMAGE}:${VERSION} ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
-	docker tag ${REPO}/${IMAGE}:${VERSION} ${REPO}/${IMAGE}:latest
+	docker tag ${REPO}/${IMAGE}:latest ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
+	docker tag ${REPO}/${IMAGE}:latest ${REPO}/${IMAGE}:${VERSION}
 	docker push ${REPO}/${IMAGE}:${VERSION}
 	docker push ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
 	docker push ${REPO}/${IMAGE}:latest
