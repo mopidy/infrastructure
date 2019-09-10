@@ -17,7 +17,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Install additional Python dependencies
-RUN sudo pip install --no-cache tox
+RUN pip install --no-cache tox
 
 # Add a VERSION file to the image
 ADD VERSION /
