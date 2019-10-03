@@ -16,6 +16,9 @@ RUN apt-get update \
     python3-gst-1.0 \
   && rm -rf /var/lib/apt/lists/*
 
+# Make python3-gst-1.0 available to non-Debian Python 3.7 installation
+RUN ln -s /usr/lib/python3/dist-packages/gi /usr/local/lib/python3.7/site-packages/gi
+
 # Install additional Python dependencies
 RUN pip install --no-cache tox
 
