@@ -15,7 +15,7 @@ build:
 release: git-release docker-release
 
 git-release:
-	git diff-index --quiet HEAD || echo "Git repo is unclean"
+	git diff-index --quiet HEAD || (echo "Git repo is unclean"; false)
 	git tag -a "${IMAGE}/${VERSION}" -m "Release ${IMAGE}:${VERSION}"
 	git push --follow-tags
 
