@@ -1,4 +1,4 @@
-FROM circleci/python:3.7.4
+FROM circleci/python:3.7.5
 
 
 # Switch to the root user while we do our changes
@@ -11,6 +11,7 @@ RUN apt-get update \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-ugly \
+    libasound2-dev \
     python-dev \
     python-gst-1.0 \
     python3-gst-1.0 \
