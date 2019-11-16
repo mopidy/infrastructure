@@ -21,7 +21,7 @@ RUN apt-get update \
 RUN ln -s /usr/lib/python3/dist-packages/gi /usr/local/lib/python3.7/site-packages/gi
 
 # Install additional Python dependencies
-RUN pip install --no-cache tox
+RUN python3.7 -m pip install --no-cache tox
 
 # Add a VERSION file to the image
 ADD VERSION /

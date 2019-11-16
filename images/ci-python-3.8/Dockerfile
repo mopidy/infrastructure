@@ -26,10 +26,10 @@ RUN apt-get update \
     libglib2.0-dev \
     libffi-dev \
   && rm -rf /var/lib/apt/lists/*
-RUN python3.8 -m pip install pygobject
+RUN python3.8 -m pip install --no-cache pygobject
 
 # Install additional Python dependencies
-RUN pip install --no-cache tox
+RUN python3.8 -m pip install --no-cache tox
 
 # Add a VERSION file to the image
 ADD VERSION /
