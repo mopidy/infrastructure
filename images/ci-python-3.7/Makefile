@@ -10,7 +10,7 @@ PYPATCH = $(shell echo ${PYVERSION} | cut -d . -f3)
 .PHONY: build release git-release docker-release
 
 build:
-	docker build -t ${REPO}/${IMAGE}:latest .
+	docker build -t ${REPO}/${IMAGE}:${VERSION} .
 
 release: git-release docker-release
 
@@ -20,8 +20,6 @@ git-release:
 	git push --follow-tags
 
 docker-release:
-	docker tag ${REPO}/${IMAGE}:latest ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
-	docker tag ${REPO}/${IMAGE}:latest ${REPO}/${IMAGE}:${VERSION}
+	docker tag ${REPO}/${IMAGE}:${VERSION} ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
 	docker push ${REPO}/${IMAGE}:${VERSION}
 	docker push ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
-	docker push ${REPO}/${IMAGE}:latest
