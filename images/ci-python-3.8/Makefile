@@ -21,7 +21,5 @@ git-release:
 
 docker-release:
 	docker tag ${REPO}/${IMAGE}:${VERSION} ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
-	docker tag ${REPO}/${IMAGE}:${VERSION} ${REPO}/${IMAGE}:latest
 	docker push ${REPO}/${IMAGE}:${VERSION}
 	docker push ${REPO}/${IMAGE}:${PYMAJOR}.${PYMINOR}
-	docker push ${REPO}/${IMAGE}:latest

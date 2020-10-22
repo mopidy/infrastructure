@@ -1,4 +1,4 @@
-FROM circleci/python:3.8.0
+FROM circleci/python:3.8.6
 
 
 # Switch to the root user while we do our changes
