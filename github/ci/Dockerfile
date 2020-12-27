@@ -1,6 +1,6 @@
-LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
-
 FROM ubuntu:20.04
+
+LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
 
 # Install GStreamer, pygobject dependencies, and other required Debian packages
 RUN apt-get update \
@@ -17,6 +17,7 @@ RUN apt-get update \
     gstreamer1.0-plugins-ugly \
     python3-gst-1.0 \
     # pygobject dependencies
+    libcairo2-dev \
     libgirepository1.0-dev \
     libglib2.0-dev \
     # mopidy-alsamixer
