@@ -2,7 +2,12 @@ FROM ubuntu:20.04
 
 LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
 
-# Install GStreamer, pygobject dependencies, and other required Debian packages
+# Setup environment for actions/setup-python
+RUN mkdir /__t
+RUN ln -s /__t /opt/hostedtoolcache
+ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache/
+
+# Install required Debian packages
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     # Basic tools
@@ -35,8 +40,3 @@ RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg \
 
 # Add a VERSION file to the image
 ADD VERSION /
-
-# Setup environment for actions/setup-python
-RUN mkdir /__t
-RUN ln -s /__t /opt/hostedtoolcache
-ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache/
