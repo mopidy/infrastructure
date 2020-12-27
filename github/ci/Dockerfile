@@ -5,12 +5,9 @@ LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
 # Install GStreamer, pygobject dependencies, and other required Debian packages
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    # System tools
+    # Basic tools
+    git \
     wget \
-    # Python development
-    python3-dev \
-    python3-pip \
-    tox \
     # GStreamer
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-good \
@@ -35,9 +32,6 @@ RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg \
     && apt-get update \
     && apt-get install -y libspotify-dev \
     && rm -rf /var/lib/apt/lists/**
-
-# Install additional Python dependencies
-RUN python3 -m pip install --no-cache tox-gh-actions
 
 # Add a VERSION file to the image
 ADD VERSION /
