@@ -1,3 +1,5 @@
+LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
+
 FROM ubuntu:20.04
 
 # Install GStreamer, pygobject dependencies, and other required Debian packages
