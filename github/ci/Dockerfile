@@ -43,4 +43,6 @@ RUN python3 -m pip install --no-cache tox-gh-actions
 ADD VERSION /
 
 # Setup environment for actions/setup-python
+RUN mkdir /__t
+RUN ln -s /__t /opt/hostedtoolcache
 ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache/
