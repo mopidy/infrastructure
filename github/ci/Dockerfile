@@ -39,5 +39,8 @@ RUN mkdir -p /usr/local/share/keyrings \
     && apt-get install -y libspotify-dev \
     && rm -rf /var/lib/apt/lists/**
 
+# Allow git to work with directories owned by other users
+RUN git config --system --add safe.directory '*'
+
 # Add a VERSION file to the image
 ADD VERSION /
