@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
 
@@ -32,9 +32,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install libspotify-dev from apt.mopidy.com
-RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg \
-    | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn apt-key add - \
-    && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list \
+RUN mkdir -p /usr/local/share/keyrings \
+    && wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg https://apt.mopidy.com/mopidy.gpg \
+    && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/bullseye.list \
     && apt-get update \
     && apt-get install -y libspotify-dev \
     && rm -rf /var/lib/apt/lists/**
