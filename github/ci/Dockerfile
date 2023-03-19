@@ -13,6 +13,7 @@ RUN apt-get update \
     # Basic tools
     curl \
     git \
+    lsb-release \
     wget \
     # GStreamer
     gstreamer1.0-plugins-bad \
