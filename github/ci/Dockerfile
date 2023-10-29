@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:23.10
 
 LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
 
@@ -26,19 +26,14 @@ RUN apt-get update \
     libglib2.0-dev \
     # mopidy-alsamixer
     libasound2-dev \
-    # pyspotify
-    libffi-dev \
     # Diagrams in docs
     graphviz-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install libspotify-dev from apt.mopidy.com
+# Enable apt.mopidy.com repo
 RUN mkdir -p /usr/local/share/keyrings \
     && wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg https://apt.mopidy.com/mopidy.gpg \
-    && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/bullseye.list \
-    && apt-get update \
-    && apt-get install -y libspotify-dev \
-    && rm -rf /var/lib/apt/lists/**
+    && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/bookworm.list
 
 # Allow git to work with directories owned by other users
 RUN git config --system --add safe.directory '*'
