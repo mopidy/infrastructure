@@ -31,8 +31,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Enable apt.mopidy.com repo
-RUN mkdir -p /usr/local/share/keyrings \
-    && wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg https://apt.mopidy.com/mopidy.gpg \
+RUN mkdir -p /etc/apt/keyrings \
+    && wget -q -O /etc/apt/keyrings/mopidy-archive-keyring.gpg https://apt.mopidy.com/mopidy.gpg \
     && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/bookworm.list
 
 # Allow git to work with directories owned by other users
