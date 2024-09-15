@@ -1,6 +1,6 @@
-FROM ubuntu:23.10
+FROM ubuntu:24.04
 
-LABEL org.opencontainers.image.source https://github.com/mopidy/infrastructure
+LABEL org.opencontainers.image.source=https://github.com/mopidy/infrastructure
 
 # Setup environment for actions/setup-python
 RUN mkdir /__t
