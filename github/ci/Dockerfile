@@ -21,9 +21,9 @@ RUN apt-get update \
     gstreamer1.0-plugins-ugly \
     python3-gst-1.0 \
     # pygobject dependencies
+    gir1.2-gtk-4.0 \
     libcairo2-dev \
-    libgirepository1.0-dev \
-    libglib2.0-dev \
+    libgirepository-2.0-dev \
     # mopidy-alsamixer
     libasound2-dev \
     # Diagrams in docs
