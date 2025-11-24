@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM debian:trixie-slim
 
 LABEL org.opencontainers.image.source=https://github.com/mopidy/infrastructure
 
@@ -30,11 +30,6 @@ RUN apt-get update \
     # Diagrams in docs
     graphviz-dev \
     && rm -rf /var/lib/apt/lists/*
-
-# Enable apt.mopidy.com repo
-RUN mkdir -p /etc/apt/keyrings \
-    && wget -q -O /etc/apt/keyrings/mopidy-archive-keyring.gpg https://apt.mopidy.com/mopidy.gpg \
-    && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/bookworm.list
 
 # Allow git to work with directories owned by other users
 RUN git config --system --add safe.directory '*'
