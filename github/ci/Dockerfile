@@ -38,6 +38,7 @@ apt-get install -qyy \
     -o APT::Install-Suggests=false \
     gir1.2-gtk-4.0 \
     libcairo2-dev \
+    libgirepository1.0-dev \
     libgirepository-2.0-dev
 
 # mopidy-alsamixer
